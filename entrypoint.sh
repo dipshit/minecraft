@@ -1,2 +1,4 @@
 #! /bin/sh
-java -Xms2G -Xmx2G -jar spigot.jar nogui
+
+cp /tmp/include/spigot.jar /home/minecraft/server/spigot.jar
+java -jar spigot.jar nogui

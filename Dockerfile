@@ -4,9 +4,7 @@ ARG SPIGOT_REV=1.14.4
 COPY build.sh .
 RUN ./build.sh ${SPIGOT_REV}
 
-RUN chmod +x spigot-${SPIGOT_REV}.jar
-
-FROM openjdk:8u212-jre-alpine
+FROM openjdk:8u212-jre-alpine as server
 ARG SPIGOT_REV=1.14.4
 RUN apk update && \
     apk upgrade && \
@@ -15,11 +13,14 @@ RUN apk update && \
 
 RUN addgroup -S minecraft && adduser -S minecraft -G minecraft
 
-WORKDIR /home/minecraft/server
+VOLUME /home/minecraft/server
+WORKDIR /tmp/include
 RUN chown -R minecraft:minecraft /home/minecraft/server
-USER minecraft
 
 COPY --from=builder /home/builder/spigot-${SPIGOT_REV}.jar ./spigot.jar
 COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x spigot.jar
+WORKDIR /home/minecraft/server
+USER minecraft
 
-CMD ["/sbin/tini", "-g", "--", "./entrypoint.sh"]
+CMD ["/tmp/include/entrypoint.sh"]
