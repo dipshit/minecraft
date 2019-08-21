@@ -1,10 +1,10 @@
-FROM arm32v7/openjdk:7-jdk as builder
+FROM arm32v7/openjdk:8-jdk as builder
 WORKDIR /home/builder
 ARG SPIGOT_REV=1.14.4
 COPY build.sh .
 RUN ./build.sh ${SPIGOT_REV}
 
-FROM arm32v7/openjdk:7-jre-alpine as server
+FROM arm32v7/openjdk:8-jre-alpine as server
 ARG SPIGOT_REV=1.14.4
 RUN apk update && \
     apk upgrade && \
