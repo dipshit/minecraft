@@ -8,7 +8,7 @@ ARG SPIGOT_REV=1.14.4
 COPY build.sh .
 RUN ./build.sh ${SPIGOT_REV}
 
-FROM openjdk:14-jdk-alpine as server
+FROM openjdk:12-jdk-alpine as server
 ARG SPIGOT_REV=1.14.4
 RUN apk update && \
     apk upgrade && \
