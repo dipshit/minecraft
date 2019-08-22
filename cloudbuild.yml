@@ -5,3 +5,5 @@ steps:
   - --destination=gcr.io/perfect-chalice-250601/spigot-server:$REVISION_ID
   - --cache=true
   - --cache-ttl=730h
+options:
+  machineType: 'N1_HIGHCPU_8'
