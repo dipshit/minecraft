@@ -1,26 +1,19 @@
-FROM openjdk:12-alpine as builder
-RUN apk update && \
-    apk upgrade && \
-    apk --no-cache add tini curl ca-certificates bind-tools openssl openssl-dev git && \
-    rm -rf /var/cache/apk/*
+FROM adoptopenjdk/openjdk12:alpine-slim as builder
 WORKDIR /home/builder
 ARG SPIGOT_REV=1.14.4
-COPY build.sh .
-RUN ./build.sh ${SPIGOT_REV}
+RUN apk add git
+ADD https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar BuildTools.jar
+RUN java -Xmx6G -jar BuildTools.jar --rev ${SPIGOT_REV}
 
-FROM openjdk:12-jdk-alpine as server
+FROM adoptopenjdk/openjdk12:alpine-jre as server
 ARG SPIGOT_REV=1.14.4
 RUN apk update && \
     apk upgrade && \
     apk --no-cache add tini curl ca-certificates bind-tools openssl openssl-dev && \
     rm -rf /var/cache/apk/*
 
-VOLUME /home/minecraft/server
-WORKDIR /tmp/include
+COPY --from=builder /home/builder/spigot-${SPIGOT_REV}.jar /jars/spigot.jar
+RUN chmod +x /jars/spigot.jar
 
-COPY --from=builder /home/builder/spigot-${SPIGOT_REV}.jar ./spigot.jar
-COPY entrypoint.sh ./entrypoint.sh
-RUN chmod +x spigot.jar
 WORKDIR /home/minecraft/server
-
-CMD ["/tmp/include/entrypoint.sh"]
+CMD ["/sbin/tini", "-g", "--", "java", "-Xmx6G", "-Xms6G", "-jar", "/jars/spigot.jar", "nogui"]
