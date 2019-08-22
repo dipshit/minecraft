@@ -1,0 +1,45 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: spigot-server
+  labels:
+    name: spigot-server
+    app: "spigot-server"
+    env: "production"
+spec:
+  progressDeadlineSeconds: 120
+  replicas: 1
+  selector:
+    matchLabels:
+      name: spigot-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: spigot-server
+        app: "spigot-server"
+        env: "production"
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - name: spigot-server
+        image: gcr.io/perfect-chalice-250601/spigot-server:latest
+        ports:
+        - containerPort: 25565
+          name: mc
+        resources:
+          requests:
+            cpu: 1200m
+            memory: 5Gi
+          limits:
+            cpu: 1500m
+            memory: 5.5Gi
+        volumeMounts:
+        - name: minecraft-map
+          mountPath: "/home/minecraft/server"
+          readOnly: false
+      volumes:
+      - name: minecraft-map
+        persistentVolumeClaim:
+          claimName: minecraft-map-volume
