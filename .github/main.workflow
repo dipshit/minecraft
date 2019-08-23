@@ -3,6 +3,6 @@ workflow "CI" {
 }
 
 action "Validate yaml" {
-  uses = "dipshit/kubeval"
+  uses = "dipshit/kubeval@master"
   args = "k8s/*"
 }
