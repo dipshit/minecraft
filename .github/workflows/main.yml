@@ -9,6 +9,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - uses: dipshit/kubeval@master
+    - uses: dipshit/kubeval@1.0
       with:
         params: 'k8s/*'
