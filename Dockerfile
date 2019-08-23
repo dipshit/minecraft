@@ -16,4 +16,4 @@ COPY --from=builder /home/builder/spigot-${SPIGOT_REV}.jar /jars/spigot.jar
 RUN chmod +x /jars/spigot.jar
 
 WORKDIR /home/minecraft/server
-CMD ["/sbin/tini", "-g", "--", "java", "-Xmx5G", "-Xms5G", "-XX:-UseContainerSupport", "-jar", "/jars/spigot.jar", "nogui"]
+CMD ["/sbin/tini", "-g", "--", "java", "-Xmx4608m", "-Xms4608m", "-XX:-UseContainerSupport", "-jar", "/jars/spigot.jar", "nogui"]
