@@ -10,5 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: dipshit/kubeval@master
+      with: 'k8s/*'
     - name: Run a one-line script
       run: echo Hello, world!
