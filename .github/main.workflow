@@ -3,6 +3,6 @@ workflow "CI" {
 }
 
 action "dipshit/kubeval" {
-  uses = "dipshit/kubeval@master"
+  uses = "docker://garethr/kubeval"
   args = "k8s/*"
 }
