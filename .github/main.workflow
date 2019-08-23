@@ -2,7 +2,7 @@ workflow "CI" {
   on = "push"
 }
 
-action "dipshit/kubeval" {
-  uses = "docker://garethr/kubeval"
+action "Validate yaml" {
+  uses = "dipshit/kubeval"
   args = "k8s/*"
 }
