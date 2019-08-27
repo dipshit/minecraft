@@ -17,4 +17,4 @@ RUN chmod +x /jars/spigot.jar
 
 WORKDIR /home/minecraft/server
 COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "-g", "--", "/entrypoint.sh"]
