@@ -39,31 +39,13 @@ spec:
         - name: minecraft-map
           mountPath: "/home/minecraft/server"
           readOnly: false
-        - name: ops
-          mountPath: "/home/minecraft/config/ops.json"
-          readOnly: true
-        - name: server-properties
-          mountPath: "/home/minecraft/config/server.properties"
-          readOnly: true
-        - name: whitelist
-          mountPath: "/home/minecraft/config/whitelist.json"
-          readOnly: true
-        - name: spigot
-          mountPath: "/home/minecraft/config/spigot.yml"
+        - name: config
+          mountPath: "/home/minecraft/config"
           readOnly: true
       volumes:
       - name: minecraft-map
         persistentVolumeClaim:
           claimName: minecraft-map-volume
-      - name: ops
+      - name: config
         configMap:
-          name: ops
-      - name: server-properties
-        configMap:
-          name: server-properties
-      - name: spigot
-        configMap:
-          name: spigot
-      - name: whitelist
-        configMap:
-          name: whitelist
+          name: config
