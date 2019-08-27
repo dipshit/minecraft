@@ -40,16 +40,16 @@ spec:
           mountPath: "/home/minecraft/server"
           readOnly: false
         - name: ops
-          mountPath: "/home/minecraft/server/ops.json"
+          mountPath: "/home/minecraft/config/ops.json"
           readOnly: true
         - name: server-properties
-          mountPath: "/home/minecraft/server/server.properties"
+          mountPath: "/home/minecraft/config/server.properties"
           readOnly: true
         - name: whitelist
-          mountPath: "/home/minecraft/server/whitelist.json"
+          mountPath: "/home/minecraft/config/whitelist.json"
           readOnly: true
         - name: spigot
-          mountPath: "/home/minecraft/server/spigot.yml"
+          mountPath: "/home/minecraft/config/spigot.yml"
           readOnly: true
       volumes:
       - name: minecraft-map
