@@ -9,6 +9,7 @@ If you want to add yourself to the whitelist:
 * Fork the repo
 * Edit `k8s/dynamic/whitelist.yml` to add your desired username, and its offline UUID
 * You can find your offline UUID using [this tool](http://tools.glowingmines.eu). Enter your username to get it
+* Make a PR and tag me for review
 
 # Use locally
 
