@@ -39,13 +39,13 @@ spec:
         - name: minecraft-map
           mountPath: "/home/minecraft/server"
           readOnly: false
-        - name: config
+        - name: whitelist
           mountPath: "/home/minecraft/config"
           readOnly: true
       volumes:
       - name: minecraft-map
         persistentVolumeClaim:
           claimName: minecraft-map-volume
-      - name: config
+      - name: whitelist
         configMap:
-          name: config
+          name: whitelist
