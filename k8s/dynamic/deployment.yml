@@ -30,7 +30,7 @@ spec:
           name: mc
         resources:
           requests:
-            cpu: 1200m
+            cpu: 1400m
             memory: 5Gi
           limits:
             cpu: 1500m
@@ -42,6 +42,7 @@ spec:
         - name: whitelist
           mountPath: "/home/minecraft/config"
           readOnly: true
+      terminationGracePeriodSeconds: 60
       volumes:
       - name: minecraft-map
         persistentVolumeClaim:
