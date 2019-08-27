@@ -16,5 +16,5 @@ COPY --from=builder /home/builder/spigot-${SPIGOT_REV}.jar /jars/spigot.jar
 RUN chmod +x /jars/spigot.jar
 
 WORKDIR /home/minecraft/server
-COPY entrypoint.sh /entrypoint.sh
+COPY scripts/entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/sbin/tini", "-g", "--", "/entrypoint.sh"]
