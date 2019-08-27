@@ -24,7 +24,7 @@ spec:
       automountServiceAccountToken: true
       containers:
       - name: spigot-server
-        image: gcr.io/perfect-chalice-250601/spigot-server:b9419f9277f66438d549ecf40a8d558ccd10226f
+        image: gcr.io/perfect-chalice-250601/spigot-server:4800d1f62413101cfac585956b57f644dd81c2cb
         ports:
         - containerPort: 25565
           name: mc
@@ -39,7 +39,13 @@ spec:
         - name: minecraft-map
           mountPath: "/home/minecraft/server"
           readOnly: false
+        - name: whitelist
+          mountPath: "/home/minecraft/config"
+          readOnly: true
       volumes:
       - name: minecraft-map
         persistentVolumeClaim:
           claimName: minecraft-map-volume
+      - name: whitelist
+        configMap:
+          name: whitelist
