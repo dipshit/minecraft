@@ -1,14 +1,14 @@
-#! /bin/bash
+#!/bin/bash
 
 cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: Pod
 metadata:
-  name: tmp
+  name: shell
 spec:
   containers:
-  - name: sandycheeks
-    image: gcr.io/cloud-builders/gcloud:latest
+  - name: gsutil
+    image: gcr.io/cloud-builders/gsutil:latest
     command: ["/bin/sleep"]
     args:
     - "100000"

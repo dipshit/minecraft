@@ -30,7 +30,7 @@ spec:
           name: mc
         resources:
           requests:
-            cpu: 1400m
+            cpu: 1300m
             memory: 5Gi
           limits:
             cpu: 1500m
