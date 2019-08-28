@@ -30,11 +30,11 @@ spec:
           name: mc
         resources:
           requests:
-            cpu: 1300m
-            memory: 5Gi
+            cpu: 3000m
+            memory: 9Gi
           limits:
-            cpu: 1500m
-            memory: 5.5Gi
+            cpu: 3300m
+            memory: 9.1Gi
         volumeMounts:
         - name: minecraft-map
           mountPath: "/home/minecraft/server"
