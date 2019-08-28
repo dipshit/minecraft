@@ -24,7 +24,7 @@ spec:
       automountServiceAccountToken: true
       containers:
       - name: spigot-server
-        image: gcr.io/perfect-chalice-250601/spigot-server:4800d1f62413101cfac585956b57f644dd81c2cb
+        image: gcr.io/perfect-chalice-250601/spigot-server:3cd21b56c5c7740d8f170021922fbabed9e22b45
         ports:
         - containerPort: 25565
           name: mc
