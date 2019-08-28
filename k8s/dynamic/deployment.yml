@@ -30,10 +30,10 @@ spec:
           name: mc
         resources:
           requests:
-            cpu: 3000m
+            cpu: 3300m
             memory: 9Gi
           limits:
-            cpu: 3300m
+            cpu: 3600m
             memory: 9.1Gi
         volumeMounts:
         - name: minecraft-map
