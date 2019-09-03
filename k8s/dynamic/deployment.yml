@@ -24,7 +24,7 @@ spec:
       automountServiceAccountToken: true
       containers:
       - name: spigot-server
-        image: gcr.io/perfect-chalice-250601/spigot-server:3cd21b56c5c7740d8f170021922fbabed9e22b45
+        image: gcr.io/perfect-chalice-250601/spigot-server:b5ffccd8b8f7c9b83a3c68510f9ea6695f3d0d43
         env:
         - name: HEAPSIZE
           value: "8G"
