@@ -32,9 +32,6 @@ spec:
           requests:
             cpu: 3300m
             memory: 8Gi
-          limits:
-            cpu: 3600m
-            memory: 9Gi
         volumeMounts:
         - name: minecraft-map
           mountPath: "/home/minecraft/server"
