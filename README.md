@@ -17,9 +17,10 @@ If you want to add yourself to the whitelist:
 Mount a map as a volume at `/home/minecraft/server`
 
 Optionally mount a whitelist at `/home/minecraft/config/whitelist.json`
+Set the heapsize with the `HEAPSIZE` env var
 
 Example:
 
 ```bash
-docker run -p 25565:25565 -v /tmp:/home/minecraft/server kirinrastogi/spigot-server:1.14.4
+docker run -p 25565:25565 -e HEAPSIZE=3G -v /tmp:/home/minecraft/server kirinrastogi/spigot-server:1.14.4
 ```
