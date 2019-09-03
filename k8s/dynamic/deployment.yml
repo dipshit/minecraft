@@ -25,6 +25,10 @@ spec:
       containers:
       - name: spigot-server
         image: gcr.io/perfect-chalice-250601/spigot-server:6cc8ed8e686eb9c572c034a31835494cfd8433ec
+        lifecycle:
+          preStop:
+            exec:
+              command: ["kill 1"]
         env:
         - name: HEAPSIZE
           value: "8G"
