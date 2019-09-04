@@ -14,19 +14,9 @@ gcloud compute disks create example-disk-name --zone=northamerica-northeast1-b -
 kubectl scale deployment spigot-server --replicas=0
 ```
 
-3. Delete the old pv & pvc
+3. Update the yaml to use the newly created disk and apply it
 
-```bash
-kubectl get pv
-kubectl delete OLD_PV_NAME
-
-kubectl get pvc
-kubectl delete OLD_PVC_NAME
-```
-
-4. Update the yaml to use the newly created disk in the PersistentVolume
-
-Update `k8s/static/volume.yml` with the name of the new disk under the `PersistentVolume.metadata.name` spec
+Update the PersistentVolume in `k8s/static/volume.yml` with the name of the new disk under the `PersistentVolume.metadata.name` spec
 
 ```yaml
 kind: PersistentVolume
@@ -34,19 +24,17 @@ metadata:
   name: example-disk-name
 ```
 
-5. Apply new pv & pvc
-
 ```bash
 kubectl apply -f k8s/static
 ```
 
-6. Scale the deployment back up
+4. Scale the deployment back up
 
 ```bash
 kubectl scale deployment spigot-server --replicas=1
 ```
 
-7. Cleanup
+5. Cleanup
 
 Use the GUI to delete unused disks
 
