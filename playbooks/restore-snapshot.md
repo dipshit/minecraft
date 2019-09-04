@@ -1,19 +1,12 @@
-## Restore the production server's disk to a snapshot
+## Restore the production pd-ssd from a snapshot
 
 1. Create a new pd-ssd disk from the source snapshot
 
-Specify size, name, zone, type, source snapshot, snapshot schedule (--resource-policies)
+Specify size (10GB), name (example-disk-name), zone (northamerica-northeast1-b), type (pd-ssd), source snapshot (first-prod-snapshot), snapshot schedule (backup-utc)
 
 ```bash
 gcloud compute disks create example-disk-name --zone=northamerica-northeast1-b --source-snapshot=first-prod-snapshot --size=10GB --type=pd-ssd --resource-policies=backup-utc
 ```
-
-Click [CREATE DISK](https://console.cloud.google.com/compute/disks/)
-
-  * Pick a name, this will go in the yaml in a next step
-  * region mtl in zone b
-  * with snapshot schedule backup-utc
-  * size 10Gb
 
 2. Scale down the server deployment
 
@@ -56,4 +49,5 @@ kubectl scale deployment spigot-server --replicas=1
 7. Cleanup
 
 Use the GUI to delete unused disks
-Kubectl delete any unused replicasets
+
+kubectl delete any unused replicasets
