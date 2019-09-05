@@ -24,7 +24,7 @@ spec:
       automountServiceAccountToken: true
       containers:
       - name: spigot-server
-        image: gcr.io/perfect-chalice-250601/spigot-server:11c674ef07b2ac88c67de24029eed5cc60e7c8c6
+        image: gcr.io/perfect-chalice-250601/spigot-server:c16911893ff44fb88a8ccd1ede6589e4de1725f5
         lifecycle:
           preStop:
             exec:
