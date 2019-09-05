@@ -11,4 +11,4 @@ jobs:
     - uses: actions/checkout@v1
     - uses: dipshit/kubeval@1.0
       with:
-        params: 'k8s/**/*.yml'
+        params: 'k8s/*.yml'
