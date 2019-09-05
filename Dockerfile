@@ -2,18 +2,18 @@ FROM adoptopenjdk/openjdk12:alpine-slim as builder
 WORKDIR /home/builder
 RUN apk add git
 ADD https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar BuildTools.jar
-ARG SPIGOT_REV=1.14.4
-ARG BUILD_RAM=6G
-RUN java -Xmx${BUILD_RAM} -jar BuildTools.jar --rev ${SPIGOT_REV}
+ADD VERSION VERSION
+RUN java -jar BuildTools.jar --rev $(cat VERSION)
+RUN mkdir -p /jars
+RUN mv spigot-$(cat VERSION).jar /jars/spigot.jar
 
 FROM adoptopenjdk/openjdk12:alpine-jre as server
-ARG SPIGOT_REV=1.14.4
 RUN apk update && \
     apk upgrade && \
     apk --no-cache add tini curl ca-certificates bind-tools openssl openssl-dev && \
     rm -rf /var/cache/apk/*
 
-COPY --from=builder /home/builder/spigot-${SPIGOT_REV}.jar /jars/spigot.jar
+COPY --from=builder /jars/spigot.jar /jars/spigot.jar
 RUN chmod +x /jars/spigot.jar
 
 WORKDIR /home/minecraft/server
