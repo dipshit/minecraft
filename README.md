@@ -1,4 +1,4 @@
-# spigot-server
+# Minecraft Server
 
 My Minecraft server on GKE with preemptible nodes.
 
@@ -22,5 +22,5 @@ Set the heapsize with the `HEAPSIZE` env var
 Example:
 
 ```bash
-docker run -p 25565:25565 -e HEAPSIZE=3G -v /tmp:/home/minecraft/server kirinrastogi/spigot-server:1.14.4
+docker run -p 25565:25565 -e HEAPSIZE=3G -v /tmp:/home/minecraft/server kirinrastogi/minecraft:1.14.4
 ```

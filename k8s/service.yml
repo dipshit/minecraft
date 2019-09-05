@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: spigot-server
+    app: minecraft-server
     env: production
-  name: spigot-server-service
+  name: minecraft-server-service
 spec:
   externalTrafficPolicy: Cluster
   ports:
@@ -13,6 +13,6 @@ spec:
     protocol: TCP
     targetPort: 25565
   selector:
-    name: spigot-server
+    name: minecraft-server
   sessionAffinity: None
   type: LoadBalancer
