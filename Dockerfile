@@ -1,9 +1,9 @@
 FROM adoptopenjdk/openjdk12:alpine-slim as builder
 WORKDIR /home/builder
-ARG SPIGOT_REV=1.14.4
-ARG BUILD_RAM=6G
 RUN apk add git
 ADD https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar BuildTools.jar
+ARG SPIGOT_REV=1.14.4
+ARG BUILD_RAM=6G
 RUN java -Xmx${BUILD_RAM} -jar BuildTools.jar --rev ${SPIGOT_REV}
 
 FROM adoptopenjdk/openjdk12:alpine-jre as server
