@@ -1,30 +1,30 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: spigot-server
+  name: minecraft-server
   labels:
-    name: spigot-server
-    app: "spigot-server"
+    name: minecraft-server
+    app: "minecraft-server"
     env: "production"
 spec:
   progressDeadlineSeconds: 120
   replicas: 1
   selector:
     matchLabels:
-      name: spigot-server
+      name: minecraft-server
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        name: spigot-server
-        app: "spigot-server"
+        name: minecraft-server
+        app: "minecraft-server"
         env: "production"
     spec:
       automountServiceAccountToken: true
       containers:
-      - name: spigot-server
-        image: gcr.io/perfect-chalice-250601/spigot-server:c16911893ff44fb88a8ccd1ede6589e4de1725f5
+      - name: minecraft-server
+        image: gcr.io/perfect-chalice-250601/minecraft:5637d5ecee6cb9eac22a508127e1a892e57cabc6
         lifecycle:
           preStop:
             exec:

@@ -11,7 +11,7 @@ gcloud compute disks create example-disk-name --zone=northamerica-northeast1-b -
 2. Scale down the server deployment
 
 ```bash
-kubectl scale deployment spigot-server --replicas=0
+kubectl scale deployment minecraft-server --replicas=0
 ```
 
 3. Update the yaml to use the newly created disk and apply it
@@ -31,7 +31,7 @@ kubectl apply -f k8s/static
 4. Scale the deployment back up
 
 ```bash
-kubectl scale deployment spigot-server --replicas=1
+kubectl scale deployment minecraft-server --replicas=1
 ```
 
 5. Cleanup
