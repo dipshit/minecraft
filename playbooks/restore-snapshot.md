@@ -16,7 +16,7 @@ kubectl scale deployment minecraft-server --replicas=0
 
 3. Update the yaml to use the newly created disk and apply it
 
-Update the PersistentVolume in `k8s/static/volume.yml` with the name of the new disk under the `PersistentVolume.metadata.name` spec
+Update the PersistentVolume in `k8s/volume.yml` with the name of the new disk under the `PersistentVolume.metadata.name` spec
 
 ```yaml
 kind: PersistentVolume
@@ -25,7 +25,7 @@ metadata:
 ```
 
 ```bash
-kubectl apply -f k8s/static
+kubectl apply -f k8s
 ```
 
 4. Scale the deployment back up
