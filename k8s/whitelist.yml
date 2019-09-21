@@ -57,6 +57,10 @@ data:
        {
          "uuid": "2e082b99-ebd2-3fb9-af0d-19792f511256",
          "name": "mat"
+       },
+       {
+         "uuid": "77068c89-ae36-3b99-a3ee-667c5577c6d1",
+         "name": "itsannarichi"
        }
     ]
 kind: ConfigMap
