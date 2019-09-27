@@ -61,6 +61,10 @@ data:
        {
          "uuid": "77068c89-ae36-3b99-a3ee-667c5577c6d1",
          "name": "itsannarichi"
+       },
+       {
+         "uuid": "7d3762e7-832a-3331-b1dc-324426e036b4",
+         "name": "IHaveNoRagrets"
        }
     ]
 kind: ConfigMap
