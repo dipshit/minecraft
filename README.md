@@ -22,5 +22,6 @@ Set the heapsize with the `HEAPSIZE` env var
 Example:
 
 ```bash
-docker run -p 25565:25565 -e HEAPSIZE=3G -v /tmp:/home/minecraft/server kirinrastogi/minecraft:1.14.4
+docker build -t minecraft:$(cat VERSION) .
+docker run -p 25565:25565 -e HEAPSIZE=3G -v /tmp:/home/minecraft/server minecraft:$(cat VERSION) .
 ```
